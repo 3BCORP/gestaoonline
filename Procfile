@@ -1,1 +1,1 @@
-web: gunicorn gestao.wsgi --log-file -
+web: gunicorn gestaoonline.wsgi --log-file -
