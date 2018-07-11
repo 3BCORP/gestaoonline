@@ -60,7 +60,6 @@ def delete_cliente(request, id):
 
     if request.method == 'POST':
         cliente.delete()
-        return redirect('clientes')
 
     return render(request, 'clientes/cliente-delete-confirm.html', {'cliente': form})
 
