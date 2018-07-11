@@ -21,7 +21,6 @@ def new_cliente(request):
     form = ClienteForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('clientes')
 
     return render(request, 'clientes/cliente-form.html', {'formu': form, 'lista':lista})
 
