@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %} Excluir registro {% endblock %}
+
+
+{% block main %}
+    <h1>Adicionar endereço</h1>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{adress_form|bootstrap}}
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %} Registro do Cliente {% endblock %}
+
+
+{% block side %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md">
+                <h4>Lista de Clientes</h4>
+                <ul class="list-group">
+                    {% for pessoa in lista %}
+                         <li class="list-group-item">  <a href="{% url 'update' pessoa.id %}">{{pessoa.first_name}}</a>
+                             <a href="{% url 'del' pessoa.id %}" class="trash-icon">
+                                <i class="fas fa-trash-alt"></i>
+                             </a>
+                         </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+             <div class="col-md">
+
+             </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block main %}
+        <h3>Cliente</h3>
+        <form  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ formu|bootstrap }}
+             <a href="{% url 'new_adress'%}" class="btn btn-primary"> Endereço
+                 <i class="fas fa-plus-circle"></i>
+             </a>
+
+        <button type="submit" class="btn btn-primary">Salvar <i class="far fa-save"></i></button>
+            <a href="{% url 'new' %}" class="btn btn-primary">Cliente <i class="fas fa-plus-circle"></i></a>
+        </form>
+
+
+{% endblock %}
+
