@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Cliente,Adress
+from .models import Cliente
 from .forms import ClienteForm,AdressForm
+
 
 # Create your views here.
 
@@ -30,6 +31,7 @@ def update_cliente(request, id):
     lista = lista_clientes()
     print(lista)
 
+
     if id==0:
         lista_none = lista_clientes()
         cliente = Cliente()
@@ -44,14 +46,13 @@ def update_cliente(request, id):
         cliente = get_object_or_404(Cliente, pk=id)
         print(cliente)
         form = ClienteForm(request.POST or None, request.FILES or None, instance=cliente)
-
         lista = lista_clientes()
         print(lista)
 
         if form.is_valid():
             form.save()
 
-    return render(request, 'clientes/cliente-form.html', {'formu': form, 'lista': lista})
+        return render(request, 'clientes/cliente-form.html', {'formu': form , 'lista': lista},)
 
 @login_required()
 def delete_cliente(request, id):
