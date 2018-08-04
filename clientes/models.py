@@ -21,4 +21,7 @@ class  Cliente(models.Model):
     adress = models.OneToOneField(Adress, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.first_name
+        return self.first_name+' '+self.last_name
+
+
+

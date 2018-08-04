@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from home import urls as home_urls
 from clientes import urls as clientes_urls
+from django.views.generic.base import TemplateView
 
 
 
@@ -29,5 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.login, name='login'),
     path('', include(home_urls)),
-    path('clientes/', include(clientes_urls))
+    path('clientes/', include(clientes_urls)),
+    path('voice/', TemplateView.as_view(template_name='voice.html')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

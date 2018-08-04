@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice</title>
+</head>
+<body>
+
+<h1>Exemplo de TamplateView e SpeechRecognition</h1>
+
+<button class="btn btn-success btn-md" id="speakBtn">Falar</button>
+
+
+
+<script>
+			window.addEventListener('DOMContentLoaded', function(event){
+				var speakBtn = document.querySelector('#speakBtn');
+
+					if (window.SpeechRecognition || window.webkitSpeechRecognition){
+
+						var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+
+						var recognition = new SpeechRecognition();
+
+						recognition.lang = 'pt-BR'
+
+							speakBtn.addEventListener('click', function(event){
+								recognition.start();
+
+							}, false);
+
+							recognition.addEventListener('result', function(event){
+								console.log(event);
+								alert(event);
+								var result = event.results[0][0].transcript;
+								console.log(result);
+								//if (result.toLowerCase() === 'luz'){
+									//document.body.classList.toggle('luz-apagada');
+								//}
+
+								window.location.href = 'http://'+result;
+								alert(result);
+
+							}, false);
+
+
+					} else{
+						alert('Este navegador não suporta esta funcionalidade ainda!');
+					}
+			}, false);
+		</script>
+</body>
+</html>

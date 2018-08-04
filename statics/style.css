@@ -5,9 +5,11 @@
 }
 
 .menu-left {
-    float: right;
+    float: left;
 }
 
 .list-cli {
-    align: center;
+    align: left;
 }
+
+

@@ -15,9 +15,10 @@ Including another URLconf
 
 
 from django.urls import path
-from .views import new_cliente,update_cliente, delete_cliente,new_adress
+from .views import new_cliente,update_cliente, delete_cliente,new_adress, search_cliente
 
 urlpatterns = [
+    path('search/', search_cliente, name='search'),
     path('new_adress/', new_adress, name='new_adress'),
     path('new/', new_cliente, name='new'),
     path('update/<int:id>/', update_cliente, name='update'),
