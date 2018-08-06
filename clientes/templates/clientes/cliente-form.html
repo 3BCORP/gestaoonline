@@ -11,19 +11,18 @@
 
 
 
-            <div class="trash-icon">
+            <div class="sidebar-sticky menu-left">
                     <form method="POST"  action ="{% url 'search'%}">
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <input id="search_input" type="text" name="search_input">
-                            <button  type="submit"  class="btn btn-primary">Pesquisa <i class="fas fa-search"></i></button>
+                            <button  type="submit"  class="btn btn-primary"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
 
-
-                <ul class="list-group">
+                <ul class="nav flex-column">
                     {% for pessoa in lista %}
-                         <li class="list-group-item list-group-item-action list-group-item-info">  <a href="{% url 'update' pessoa.id %}">{{pessoa.first_name}}</a>
+                         <li class="btn btn-light" ><a href="{% url 'update' pessoa.id %}">{{pessoa.first_name}}</a>
                              <a href="{% url 'del' pessoa.id %}" class="trash-icon">
                                 <i class="fas fa-trash-alt"></i>
                              </a>
@@ -31,7 +30,7 @@
                     {% endfor %}
 
                 </ul>
-            </div>
+
 
         </div>
     </div>
